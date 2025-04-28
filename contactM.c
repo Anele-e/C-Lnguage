@@ -8,24 +8,28 @@ struct Contacts
 };
 
 int main(){
-    char in[10];
+    char input[10];
+    int count;
     printf("How many contacts do you want to store? ");
-    scanf("%s", in);
-    int c = atoi(in);
-    struct Contacts *mylist = malloc(c * sizeof(struct Contacts));
+    scanf("%d", &count);
+    // int count = atoi(input);
+    struct Contacts *mylist = malloc(count * sizeof(struct Contacts));
+    if (mylist == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
     struct Contacts c1;
-    for (int i =0; i < c; i++)
+    for (int i =0; i < count; i++)
     {
-        printf("Enter name for contact %d number: ", i+1);
-        scanf("%s", c1.name);
+        printf("Enter name for contact %d : ", i+1);
+        scanf("%s", mylist[i].name);
         printf("Enter phone number for contact %d number: ", i+1);
-        scanf("%s", c1.phone);
-        mylist[i] = c1;
+        scanf("%s", mylist[i].phone);
 
     }
     
     printf("Your contacts are: \n");
-    for (int i=0; i < c; i++){
+    for (int i=0; i < count; i++){
         printf("%s: %s\n", mylist[i].name, mylist[i].phone);
 }
     free(mylist);
