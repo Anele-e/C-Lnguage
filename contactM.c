@@ -12,7 +12,7 @@ int main(){
     int count;
     printf("How many contacts do you want to store? ");
     scanf("%d", &count);
-    // int count = atoi(input);
+    
     struct Contacts *mylist = malloc(count * sizeof(struct Contacts));
     if (mylist == NULL) {
         printf("Memory allocation failed!\n");
